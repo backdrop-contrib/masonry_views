@@ -1,0 +1,13 @@
+<?php
+/**
+ * @file
+ * Provides a Views plugin for displaying content in a Masonry layout.
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function masonry_views_views_api() {
+  return array('api' => 3);
+}
+
