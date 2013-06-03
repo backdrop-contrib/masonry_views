@@ -3,6 +3,8 @@ description = "Provides a Views plugin for displaying content in a Masonry layou
 core = 7.x
 package = Masonry
 
+files[] = views_plugin_style_masonry_views.inc
+
 dependencies[] = masonry (>=2.x)
 dependencies[] = views
 
