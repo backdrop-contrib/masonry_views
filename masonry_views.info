@@ -5,6 +5,6 @@ package = Masonry
 
 files[] = views_plugin_style_masonry_views.inc
 
-dependencies[] = masonry (>=2.x)
+dependencies[] = masonry (>=3.x)
 dependencies[] = views
 
