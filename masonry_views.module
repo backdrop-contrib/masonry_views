@@ -22,8 +22,12 @@ function template_preprocess_views_view_masonry(&$vars) {
   $view = $vars['view'];
   $options = $vars['options'];
 
+  // Create a unique masonry-container ID
+  $unique_masonry_container = drupal_html_id('view-masonry-container');
+  $vars['container_id'] = $unique_masonry_container;
+
   // Display content in a Masonry layout
-  $container = '.view-' . drupal_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' .view-content';
+  $container = '#' . $unique_masonry_container;
   $options['masonry_item_selector'] = '.masonry-item';
   masonry_apply($container, $options);
 }
