@@ -23,7 +23,7 @@ function template_preprocess_views_view_masonry(&$vars) {
   $options = $vars['options'];
 
   // Display content in a Masonry layout
-  $container = '.view-' . drupal_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' .view-content';
+  $container = '.view-' . drupal_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' > .view-content';
   $options['masonry_item_selector'] = '.masonry-item';
   masonry_apply($container, $options);
 }
