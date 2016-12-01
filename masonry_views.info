@@ -1,10 +1,9 @@
 name = Masonry Views
 description = "Provides a Views plugin for displaying content in a Masonry layout."
-core = 7.x
+backdrop = 1.x
 package = Masonry
+type = module
 
-files[] = views_plugin_style_masonry_views.inc
-
-dependencies[] = masonry (>=3.x)
+dependencies[] = masonry
 dependencies[] = views
 

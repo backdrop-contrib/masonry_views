@@ -7,6 +7,8 @@
 /**
  * Implements hook_views_plugins().
  */
+ 
+ /*
 function masonry_views_views_plugins() {
   return array(
     'style' => array(
@@ -16,6 +18,8 @@ function masonry_views_views_plugins() {
         'uses options' => TRUE,
         'help' => t("Display content in a Masonry layout."),
         'theme' => 'views_view_masonry',
+        'theme file' => 'views-view-masonry.tpl.php',
+        'theme path' => backdrop_get_path('module', 'masonry_views'),
         'type' => 'normal',
         'uses row plugin' => TRUE,
         'uses row class' => TRUE,
@@ -25,3 +29,4 @@ function masonry_views_views_plugins() {
   );
 }
 
+*/

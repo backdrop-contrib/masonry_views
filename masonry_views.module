@@ -5,6 +5,15 @@
  */
 
 /**
+ * Implements hook_autoload_info().
+ */
+function masonry_views_autoload_info() {
+  return array(
+    'views_plugin_style_masonry_views' => 'views_plugin_style_masonry_views.inc',
+  );
+}
+
+/**
  * Implements hook_views_api().
  */
 function masonry_views_views_api() {
@@ -19,14 +28,14 @@ function template_preprocess_views_view_masonry(&$vars) {
   template_preprocess_views_view_unformatted($vars);
 
   // Add some default CSS.
-  drupal_add_css(drupal_get_path('module', 'masonry_views') . '/css/masonry_views.css');
+  backdrop_add_css(backdrop_get_path('module', 'masonry_views') . '/css/masonry_views.css');
 
   // Get view options
   $view = $vars['view'];
   $options = $vars['options'];
 
   // Display content in a Masonry layout
-  $container = '.view-' . drupal_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' > .view-content';
+  $container = '.view-' . backdrop_clean_css_identifier($view->name) . '.view-display-id-' . $view->current_display . ' > .view-content';
   if (!empty($options['grouping'])) {
     $vars['grouping'] = true;
     static $groupid;
@@ -37,3 +46,34 @@ function template_preprocess_views_view_masonry(&$vars) {
   $options['masonry_item_selector'] = '.masonry-item';
   masonry_apply($container, $options);
 }
+
+//Temporarily patch in the plugin hook below since the autoload doesn't seem to be working from a separate file.
+
+/**
+ * @file
+ * Provide views data and handlers for masonry_views.module.
+ */
+
+/**
+ * Implements hook_views_plugins().
+ */
+function masonry_views_views_plugins() {
+  return array(
+    'style' => array(
+      'masonry_views' => array(
+        'title' => t('Masonry'),
+        'handler' => 'views_plugin_style_masonry_views',
+        'uses options' => TRUE,
+        'help' => t("Display content in a Masonry layout."),
+        'theme' => 'views_view_masonry',
+        'theme file' => 'views-view-masonry.tpl.php',
+        'theme path' => backdrop_get_path('module', 'masonry_views'),
+        'type' => 'normal',
+        'uses row plugin' => TRUE,
+        'uses row class' => TRUE,
+        'uses grouping' => TRUE,
+      ),
+    ),
+  );
+}
+
