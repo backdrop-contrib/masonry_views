@@ -7,8 +7,7 @@
 /**
  * Implements hook_views_plugins().
  */
- 
- /*
+
 function masonry_views_views_plugins() {
   return array(
     'style' => array(
@@ -28,5 +27,3 @@ function masonry_views_views_plugins() {
     ),
   );
 }
-
-*/

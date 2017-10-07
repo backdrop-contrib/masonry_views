@@ -14,6 +14,11 @@ function masonry_views_autoload_info() {
 }
 
 /**
+  * Load include file.
+  */
+module_load_include('inc','masonry_views','masonry_views.views');
+
+/**
  * Implements hook_views_api().
  */
 function masonry_views_views_api() {
@@ -29,6 +34,10 @@ function template_preprocess_views_view_masonry(&$vars) {
 
   // Add some default CSS.
   backdrop_add_css(backdrop_get_path('module', 'masonry_views') . '/css/masonry_views.css');
+
+  // Load the libraries.
+  backdrop_add_library('masonry', 'masonry');
+  backdrop_add_library('imagesloaded', 'imagesloaded');
 
   // Get view options
   $view = $vars['view'];
@@ -46,34 +55,3 @@ function template_preprocess_views_view_masonry(&$vars) {
   $options['masonry_item_selector'] = '.masonry-item';
   masonry_apply($container, $options);
 }
-
-//Temporarily patch in the plugin hook below since the autoload doesn't seem to be working from a separate file.
-
-/**
- * @file
- * Provide views data and handlers for masonry_views.module.
- */
-
-/**
- * Implements hook_views_plugins().
- */
-function masonry_views_views_plugins() {
-  return array(
-    'style' => array(
-      'masonry_views' => array(
-        'title' => t('Masonry'),
-        'handler' => 'views_plugin_style_masonry_views',
-        'uses options' => TRUE,
-        'help' => t("Display content in a Masonry layout."),
-        'theme' => 'views_view_masonry',
-        'theme file' => 'views-view-masonry.tpl.php',
-        'theme path' => backdrop_get_path('module', 'masonry_views'),
-        'type' => 'normal',
-        'uses row plugin' => TRUE,
-        'uses row class' => TRUE,
-        'uses grouping' => TRUE,
-      ),
-    ),
-  );
-}
-

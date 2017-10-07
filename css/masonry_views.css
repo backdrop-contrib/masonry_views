@@ -1,5 +1,6 @@
 .masonry-item {
   width: 30%;
+  min-width: 200px;
   background-color: #f6f6f2;
   border: 1px solid #DDDDDD;
   margin: 0.5%;

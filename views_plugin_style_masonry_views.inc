@@ -65,4 +65,3 @@ class views_plugin_style_masonry_views extends views_plugin_style {
   }
 
 }
-
