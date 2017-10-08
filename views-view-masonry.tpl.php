@@ -11,8 +11,8 @@
     <?php endif; ?>
   <?php print $prefix ?>
 <?php endif; ?>
-<?php foreach ($rows as $id => $row): ?>
-  <div class="masonry-item<?php if ($classes_array[$id]) print ' ' . $classes_array[$id]; ?>">
+<?php foreach ($rows as $row_count => $row): ?>
+  <div class="masonry-item<?php if ($row_classes[$row_count]) print ' ' . implode(' ', $row_classes[$row_count]); ?>">
     <?php print $row; ?>
   </div>
 <?php endforeach; ?>
